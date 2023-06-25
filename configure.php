@@ -217,9 +217,9 @@ foreach ($files as $file) {
     match (true) {
         str_contains($file, determineSeparator('src/UI/API/Controllers/ModelController.php')) => rename($file, determineSeparator('./src/UI/API/Controllers/'.$modelName.'Controller.php')),
         str_contains($file, determineSeparator('src/UI/Filament/Resources/ModelResource.php')) => rename($file, determineSeparator('./src/UI/Filament/Resources/'.$modelName.'Resource.php')),
-        str_contains($file, determineSeparator('src/UI/Filament/Resources/Pages/CreateModel.php')) => rename($file, determineSeparator('./src/UI/Filament/Resources/Pages/Create'.$modelName.'.php')),
-        str_contains($file, determineSeparator('src/UI/Filament/Resources/Pages/EditModel.php')) => rename($file, determineSeparator('./src/UI/Filament/Resources/Pages/Edit'.$modelName.'.php')),
-        str_contains($file, determineSeparator('src/UI/Filament/Resources/Pages/ListModel.php')) => rename($file, determineSeparator('./src/UI/Filament/Resources/Pages/List'.$modelName.'.php')),
+        str_contains($file, determineSeparator('src/UI/Filament/Resources/ModelResource/Pages/CreateModel.php')) => rename($file, determineSeparator('./src/UI/Filament/Resources/ModelResource/Pages/Create'.$modelName.'.php')),
+        str_contains($file, determineSeparator('src/UI/Filament/Resources/ModelResource/Pages/EditModel.php')) => rename($file, determineSeparator('./src/UI/Filament/Resources/ModelResource/Pages/Edit'.$modelName.'.php')),
+        str_contains($file, determineSeparator('src/UI/Filament/Resources/ModelResource/Pages/ListModel.php')) => rename($file, determineSeparator('./src/UI/Filament/Resources/ModelResource/Pages/List'.$modelName.'.php')),
         str_contains($file, determineSeparator('src/Models/Model.php')) => rename($file, determineSeparator('./src/Models/'.$modelName.'.php')),
         str_contains($file, determineSeparator('src/Skeleton.php')) => rename($file, determineSeparator('./src/'.$className.'.php')),
         str_contains($file, determineSeparator('src/SkeletonServiceProvider.php')) => rename($file, determineSeparator('./src/'.$className.'ServiceProvider.php')),
