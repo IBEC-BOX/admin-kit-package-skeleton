@@ -133,12 +133,12 @@ function determineSeparator(string $path): string
 
 function replaceForWindows(): array
 {
-    return preg_split('/\\r\\n|\\r|\\n/', run('dir /S /B * | findstr /v /i .git\ | findstr /v /i vendor | findstr /v /i '.basename(__FILE__).' | findstr /r /i /M /F:/ ":author :vendor :package VendorName skeleton migration_table_name vendor_name vendor_slug author@domain.com"'));
+    return preg_split('/\\r\\n|\\r|\\n/', run('dir /S /B * | findstr /v /i .git\ | findstr /v /i vendor | findstr /v /i '.basename(__FILE__).' | findstr /r /i /M /F:/ ":author :vendor :package VendorName skeleton migration_table_name github_name packagist_name author@domain.com"'));
 }
 
 function replaceForAllOtherOSes(): array
 {
-    return explode(PHP_EOL, run('grep -E -r -l -i ":author|:vendor|:package|VendorName|skeleton|migration_table_name|vendor_name|vendor_slug|author@domain.com" --exclude-dir=vendor ./* ./.github/* | grep -v '.basename(__FILE__)));
+    return explode(PHP_EOL, run('grep -E -r -l -i ":author|:vendor|:package|VendorName|skeleton|migration_table_name|github_name|packagist_name|author@domain.com" --exclude-dir=vendor ./* ./.github/* | grep -v '.basename(__FILE__)));
 }
 
 $gitName = run('git config user.name');
@@ -152,10 +152,9 @@ $usernameGuess = dirname($usernameGuess);
 $usernameGuess = basename($usernameGuess);
 $authorUsername = ask('Author username', $usernameGuess);
 
-$vendorName = ask('Vendor name', $authorUsername);
-$vendorSlug = slugify($vendorName);
-$vendorNamespace = str_replace('-', '', ucwords($vendorName));
-$vendorNamespace = ask('Vendor namespace', $vendorNamespace);
+$githubName = 'ibec-box';
+$packagistName = 'ibecsystems';
+$vendorNamespace = 'AdminKit';
 
 $currentDirectory = getcwd();
 $folderName = basename($currentDirectory);
@@ -172,12 +171,11 @@ $description = ask('Package description', "This is my package {$packageSlug}");
 $usePhpStan = confirm('Enable PhpStan?', true);
 $useLaravelPint = confirm('Enable Laravel Pint?', true);
 $useDependabot = confirm('Enable Dependabot?', true);
-$useLaravelRay = confirm('Use Ray for debugging?', true);
 $useUpdateChangelogWorkflow = confirm('Use automatic changelog updater workflow?', true);
 
 writeln('------');
 writeln("Author     : {$authorName} ({$authorUsername}, {$authorEmail})");
-writeln("Vendor     : {$vendorName} ({$vendorSlug})");
+writeln("Vendor     : {$githubName} ({$packagistName})");
 writeln("Package    : {$packageSlug} <{$description}>");
 writeln("Namespace  : {$vendorNamespace}\\{$className}");
 writeln("Class name : {$className}");
@@ -186,7 +184,6 @@ writeln('Packages & Utilities');
 writeln('Use Laravel/Pint       : '.($useLaravelPint ? 'yes' : 'no'));
 writeln('Use Larastan/PhpStan : '.($usePhpStan ? 'yes' : 'no'));
 writeln('Use Dependabot       : '.($useDependabot ? 'yes' : 'no'));
-writeln('Use Ray App          : '.($useLaravelRay ? 'yes' : 'no'));
 writeln('Use Auto-Changelog   : '.($useUpdateChangelogWorkflow ? 'yes' : 'no'));
 writeln('------');
 
@@ -203,8 +200,8 @@ foreach ($files as $file) {
         ':author_name' => $authorName,
         ':author_username' => $authorUsername,
         'author@domain.com' => $authorEmail,
-        ':vendor_name' => $vendorName,
-        ':vendor_slug' => $vendorSlug,
+        ':github_name' => $githubName,
+        ':packagist_name' => $packagistName,
         'VendorName' => $vendorNamespace,
         ':package_name' => $packageName,
         ':package_slug' => $packageSlug,
@@ -251,10 +248,6 @@ if (! $usePhpStan) {
 if (! $useDependabot) {
     safeUnlink(__DIR__.'/.github/dependabot.yml');
     safeUnlink(__DIR__.'/.github/workflows/dependabot-auto-merge.yml');
-}
-
-if (! $useLaravelRay) {
-    remove_composer_deps(['spatie/laravel-ray']);
 }
 
 if (! $useUpdateChangelogWorkflow) {
