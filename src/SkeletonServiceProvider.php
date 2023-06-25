@@ -5,6 +5,8 @@ namespace VendorName\Skeleton;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 use VendorName\Skeleton\Commands\SkeletonCommand;
+use VendorName\Skeleton\Providers\FilamentServiceProvider;
+use VendorName\Skeleton\Providers\RouteServiceProvider;
 
 class SkeletonServiceProvider extends PackageServiceProvider
 {
@@ -21,5 +23,11 @@ class SkeletonServiceProvider extends PackageServiceProvider
             ->hasViews()
             ->hasMigration('create_:package_slug_without_prefix_table')
             ->hasCommand(SkeletonCommand::class);
+    }
+
+    public function registeringPackage()
+    {
+        $this->app->register(FilamentServiceProvider::class);
+        $this->app->register(RouteServiceProvider::class);
     }
 }
