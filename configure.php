@@ -162,6 +162,7 @@ $folderName = basename($currentDirectory);
 $packageName = ask('Package name', $folderName);
 $packageSlug = slugify($packageName);
 $packageSlugWithoutPrefix = remove_prefix('laravel-', $packageSlug);
+$packageSlugWithoutPrefix = remove_prefix('admin-kit-', $packageSlugWithoutPrefix);
 
 $className = title_case($packageName);
 $className = ask('Class name', $className);
