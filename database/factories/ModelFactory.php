@@ -12,7 +12,7 @@ class ModelNameFactory extends Factory
     public function definition()
     {
         return [
-
+            //
         ];
     }
 }

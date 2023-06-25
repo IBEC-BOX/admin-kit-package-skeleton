@@ -161,8 +161,7 @@ $folderName = basename($currentDirectory);
 
 $packageName = ask('Package name', $folderName);
 $packageSlug = slugify($packageName);
-$packageSlugWithoutPrefix = remove_prefix('laravel-', $packageSlug);
-$packageSlugWithoutPrefix = remove_prefix('admin-kit-', $packageSlugWithoutPrefix);
+$packageSlugWithoutPrefix = remove_prefix('admin-kit-', $packageSlug);
 
 $className = ask('Class name', title_case($packageSlugWithoutPrefix));
 $modelName = ask('Model name', $className);
@@ -223,7 +222,7 @@ foreach ($files as $file) {
         str_contains($file, determineSeparator('src/Commands/SkeletonCommand.php')) => rename($file, determineSeparator('./src/Commands/'.$className.'Command.php')),
         str_contains($file, determineSeparator('database/factories/ModelFactory.php')) => rename($file, determineSeparator('./database/factories/'.$modelName.'Factory.php')),
         str_contains($file, determineSeparator('database/migrations/create_skeleton_table.php.stub')) => rename($file, determineSeparator('./database/migrations/create_'.title_snake($packageSlugWithoutPrefix).'_table.php.stub')),
-        str_contains($file, determineSeparator('config/skeleton.php')) => rename($file, determineSeparator('./config/'.$packageSlugWithoutPrefix.'.php')),
+        str_contains($file, determineSeparator('config/skeleton.php')) => rename($file, determineSeparator('./config/'.$packageSlug.'.php')),
         str_contains($file, 'README.md') => remove_readme_paragraphs($file),
         default => [],
     };
