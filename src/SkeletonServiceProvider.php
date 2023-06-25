@@ -19,7 +19,7 @@ class SkeletonServiceProvider extends PackageServiceProvider
             ->name('skeleton')
             ->hasConfigFile()
             ->hasViews()
-            ->hasMigration('create_skeleton_table')
+            ->hasMigration('create_:package_slug_without_prefix_table')
             ->hasCommand(SkeletonCommand::class);
     }
 }
