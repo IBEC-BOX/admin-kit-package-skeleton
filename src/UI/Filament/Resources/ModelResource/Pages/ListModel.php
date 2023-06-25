@@ -1,6 +1,6 @@
 <?php
 
-namespace VendorName\Skeleton\UI\Filament\Resources\Pages;
+namespace VendorName\Skeleton\UI\Filament\Resources\ModelNameResource\Pages;
 
 use VendorName\Skeleton\UI\Filament\Resources\ModelNameResource;
 use Filament\Pages\Actions;

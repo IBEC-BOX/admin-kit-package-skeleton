@@ -1,14 +1,14 @@
 <?php
 
-namespace VendorName\Skeleton\UI\Filament\Resources\Pages;
+namespace VendorName\Skeleton\UI\Filament\Resources\ModelNameResource\Pages;
 
 use VendorName\Skeleton\UI\Filament\Resources\ModelNameResource;
 use Filament\Pages\Actions;
-use Filament\Resources\Pages\EditRecord;
+use Filament\Resources\Pages\CreateRecord;
 
-class EditModelName extends EditRecord
+class CreateModelName extends CreateRecord
 {
-    use EditRecord\Concerns\Translatable;
+    use CreateRecord\Concerns\Translatable;
 
     protected static string $resource = ModelNameResource::class;
 
@@ -16,7 +16,6 @@ class EditModelName extends EditRecord
     {
         return [
             Actions\LocaleSwitcher::make(),
-            Actions\DeleteAction::make(),
         ];
     }
 }

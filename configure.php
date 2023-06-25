@@ -231,6 +231,8 @@ foreach ($files as $file) {
         str_contains($file, 'README.md') => remove_readme_paragraphs($file),
         default => [],
     };
+
+    rename('src/UI/Filament/Resources/ModelResource', determineSeparator('./src/UI/Filament/Resources/'.$modelName.'Resource'));
 }
 
 if (! $useLaravelPint) {

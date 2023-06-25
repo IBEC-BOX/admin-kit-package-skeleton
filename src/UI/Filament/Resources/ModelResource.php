@@ -3,7 +3,7 @@
 namespace VendorName\Skeleton\UI\Filament\Resources;
 
 use VendorName\Skeleton\Models\ModelName;
-use VendorName\Skeleton\UI\Filament\Resources\Pages;
+use VendorName\Skeleton\UI\Filament\Resources\ModelNameResource\Pages;
 use Filament\Forms;
 use Filament\Resources\Concerns\Translatable;
 use Filament\Resources\Form;
