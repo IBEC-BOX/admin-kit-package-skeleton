@@ -3,7 +3,7 @@
 namespace VendorName\Skeleton\Models;
 
 use AdminKit\Core\Ship\Abstracts\Models\AbstractModel;
-use VendorName\Skeleton\Factories\ModelNameFactory;
+use VendorName\Skeleton\Database\Factories\ModelNameFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Spatie\Translatable\HasTranslations;
 
@@ -13,7 +13,7 @@ class ModelName extends AbstractModel
     use HasTranslations;
 
     protected $fillable = [
-        //
+        'title',
     ];
 
     protected $casts = [
@@ -21,7 +21,7 @@ class ModelName extends AbstractModel
     ];
 
     protected $translatable = [
-        //
+        'title',
     ];
 
     protected static function newFactory(): ModelNameFactory

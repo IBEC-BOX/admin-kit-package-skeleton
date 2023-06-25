@@ -24,39 +24,23 @@ class ModelNameResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Card::make([
-                    Forms\Components\TextInput::make('id')
-                        ->required()
-                        ->afterStateUpdated(
-                            function (string $context, $state, callable $set) {
-                                if ($context === 'create') {
-                                    $set('slug', Str::slug($state));
-                                }
-                            }
-                        ),
-
-                    Forms\Components\TextInput::make('slug')
-                        ->disabled()
-                        ->required()
-                        ->unique(ModelName::class, 'slug', ignoreRecord: true),
-
-                    Forms\Components\RichEditor::make('content')->required()->columnSpan(2),
-                ])->columns(),
+                Forms\Components\TextInput::make('title')->required(),
             ])
-            ->columns(2);
+            ->columns(1);
     }
 
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('id'),
+                Tables\Columns\TextColumn::make('title'),
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
