@@ -164,10 +164,10 @@ $packageSlug = slugify($packageName);
 $packageSlugWithoutPrefix = remove_prefix('laravel-', $packageSlug);
 $packageSlugWithoutPrefix = remove_prefix('admin-kit-', $packageSlugWithoutPrefix);
 
-$className = title_case($packageName);
-$className = ask('Class name', $className);
+$className = ask('Class name', title_case($packageSlugWithoutPrefix));
+$modelName = ask('Model name', $className);
+$description = ask('Package description', "$className package for Admin Kit");
 $variableName = lcfirst($className);
-$description = ask('Package description', "This is my package {$packageSlug}");
 
 $usePhpStan = confirm('Enable PhpStan?', true);
 $useLaravelPint = confirm('Enable Laravel Pint?', true);
@@ -209,16 +209,19 @@ foreach ($files as $file) {
         ':package_slug_without_prefix' => $packageSlugWithoutPrefix,
         'Skeleton' => $className,
         'skeleton' => $packageSlug,
-        'migration_table_name' => title_snake($packageSlug),
+        'ModelName' => $modelName,
+        'migration_table_name' => title_snake($packageSlugWithoutPrefix),
         'variable' => $variableName,
         ':package_description' => $description,
     ]);
 
     match (true) {
+        str_contains($file, determineSeparator('src/Models/Model.php')) => rename($file, determineSeparator('./src/Models/'.$modelName.'.php')),
         str_contains($file, determineSeparator('src/Skeleton.php')) => rename($file, determineSeparator('./src/'.$className.'.php')),
         str_contains($file, determineSeparator('src/SkeletonServiceProvider.php')) => rename($file, determineSeparator('./src/'.$className.'ServiceProvider.php')),
         str_contains($file, determineSeparator('src/Facades/Skeleton.php')) => rename($file, determineSeparator('./src/Facades/'.$className.'.php')),
         str_contains($file, determineSeparator('src/Commands/SkeletonCommand.php')) => rename($file, determineSeparator('./src/Commands/'.$className.'Command.php')),
+        str_contains($file, determineSeparator('database/factories/ModelFactory.php')) => rename($file, determineSeparator('./database/factories/'.$modelName.'Factory.php')),
         str_contains($file, determineSeparator('database/migrations/create_skeleton_table.php.stub')) => rename($file, determineSeparator('./database/migrations/create_'.title_snake($packageSlugWithoutPrefix).'_table.php.stub')),
         str_contains($file, determineSeparator('config/skeleton.php')) => rename($file, determineSeparator('./config/'.$packageSlugWithoutPrefix.'.php')),
         str_contains($file, 'README.md') => remove_readme_paragraphs($file),
