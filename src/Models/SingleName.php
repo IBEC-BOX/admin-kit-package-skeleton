@@ -12,6 +12,8 @@ class SingleName extends AbstractModel
     use HasFactory;
     use HasTranslations;
 
+    protected $table = 'migration_table_name';
+
     protected $fillable = [
         'title',
     ];

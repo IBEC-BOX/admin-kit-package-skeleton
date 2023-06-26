@@ -209,7 +209,7 @@ foreach ($files as $file) {
         'Skeleton' => $className,
         'skeleton' => $packageSlug,
         'SingleName' => $singleName,
-        'migration_table_name' => title_snake($packageSlugWithoutPrefix),
+        'migration_table_name' => title_snake($packageSlug),
         'variable' => $variableName,
         ':package_description' => $description,
     ]);
@@ -226,7 +226,7 @@ foreach ($files as $file) {
         str_contains($file, determineSeparator('src/Facades/Skeleton.php')) => rename($file, determineSeparator('./src/Facades/'.$className.'.php')),
         str_contains($file, determineSeparator('src/Commands/SkeletonCommand.php')) => rename($file, determineSeparator('./src/Commands/'.$className.'Command.php')),
         str_contains($file, determineSeparator('database/factories/ModelFactory.php')) => rename($file, determineSeparator('./database/factories/'.$singleName.'Factory.php')),
-        str_contains($file, determineSeparator('database/migrations/create_skeleton_table.php.stub')) => rename($file, determineSeparator('./database/migrations/create_'.title_snake($packageSlugWithoutPrefix).'_table.php.stub')),
+        str_contains($file, determineSeparator('database/migrations/create_skeleton_table.php.stub')) => rename($file, determineSeparator('./database/migrations/create_'.title_snake($packageSlug).'_table.php.stub')),
         str_contains($file, determineSeparator('config/skeleton.php')) => rename($file, determineSeparator('./config/'.$packageSlug.'.php')),
         str_contains($file, 'README.md') => remove_readme_paragraphs($file),
         default => [],
