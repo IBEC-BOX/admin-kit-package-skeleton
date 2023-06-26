@@ -164,7 +164,7 @@ $packageSlug = slugify($packageName);
 $packageSlugWithoutPrefix = remove_prefix('admin-kit-', $packageSlug);
 
 $className = ask('Class name', title_case($packageSlugWithoutPrefix));
-$modelName = ask('Model name', $className);
+$singleName = ask('Single name', $className);
 $description = ask('Package description', "$className package for Admin Kit");
 $variableName = lcfirst($className);
 
@@ -208,24 +208,24 @@ foreach ($files as $file) {
         ':package_slug' => $packageSlug,
         'Skeleton' => $className,
         'skeleton' => $packageSlug,
-        'ModelName' => $modelName,
+        'SingleName' => $singleName,
         'migration_table_name' => title_snake($packageSlugWithoutPrefix),
         'variable' => $variableName,
         ':package_description' => $description,
     ]);
 
     match (true) {
-        str_contains($file, determineSeparator('src/UI/API/Controllers/ModelController.php')) => rename($file, determineSeparator('./src/UI/API/Controllers/'.$modelName.'Controller.php')),
-        str_contains($file, determineSeparator('src/UI/Filament/Resources/ModelResource.php')) => rename($file, determineSeparator('./src/UI/Filament/Resources/'.$modelName.'Resource.php')),
-        str_contains($file, determineSeparator('src/UI/Filament/Resources/ModelResource/Pages/CreateModel.php')) => rename($file, determineSeparator('./src/UI/Filament/Resources/ModelResource/Pages/Create'.$modelName.'.php')),
-        str_contains($file, determineSeparator('src/UI/Filament/Resources/ModelResource/Pages/EditModel.php')) => rename($file, determineSeparator('./src/UI/Filament/Resources/ModelResource/Pages/Edit'.$modelName.'.php')),
-        str_contains($file, determineSeparator('src/UI/Filament/Resources/ModelResource/Pages/ListModel.php')) => rename($file, determineSeparator('./src/UI/Filament/Resources/ModelResource/Pages/List'.$modelName.'.php')),
-        str_contains($file, determineSeparator('src/Models/Model.php')) => rename($file, determineSeparator('./src/Models/'.$modelName.'.php')),
+        str_contains($file, determineSeparator('src/UI/API/Controllers/ModelController.php')) => rename($file, determineSeparator('./src/UI/API/Controllers/'.$singleName.'Controller.php')),
+        str_contains($file, determineSeparator('src/UI/Filament/Resources/ModelResource.php')) => rename($file, determineSeparator('./src/UI/Filament/Resources/'.$singleName.'Resource.php')),
+        str_contains($file, determineSeparator('src/UI/Filament/Resources/ModelResource/Pages/CreateModel.php')) => rename($file, determineSeparator('./src/UI/Filament/Resources/ModelResource/Pages/Create'.$singleName.'.php')),
+        str_contains($file, determineSeparator('src/UI/Filament/Resources/ModelResource/Pages/EditModel.php')) => rename($file, determineSeparator('./src/UI/Filament/Resources/ModelResource/Pages/Edit'.$singleName.'.php')),
+        str_contains($file, determineSeparator('src/UI/Filament/Resources/ModelResource/Pages/ListModel.php')) => rename($file, determineSeparator('./src/UI/Filament/Resources/ModelResource/Pages/List'.$singleName.'.php')),
+        str_contains($file, determineSeparator('src/Models/Model.php')) => rename($file, determineSeparator('./src/Models/'.$singleName.'.php')),
         str_contains($file, determineSeparator('src/Skeleton.php')) => rename($file, determineSeparator('./src/'.$className.'.php')),
         str_contains($file, determineSeparator('src/SkeletonServiceProvider.php')) => rename($file, determineSeparator('./src/'.$className.'ServiceProvider.php')),
         str_contains($file, determineSeparator('src/Facades/Skeleton.php')) => rename($file, determineSeparator('./src/Facades/'.$className.'.php')),
         str_contains($file, determineSeparator('src/Commands/SkeletonCommand.php')) => rename($file, determineSeparator('./src/Commands/'.$className.'Command.php')),
-        str_contains($file, determineSeparator('database/factories/ModelFactory.php')) => rename($file, determineSeparator('./database/factories/'.$modelName.'Factory.php')),
+        str_contains($file, determineSeparator('database/factories/ModelFactory.php')) => rename($file, determineSeparator('./database/factories/'.$singleName.'Factory.php')),
         str_contains($file, determineSeparator('database/migrations/create_skeleton_table.php.stub')) => rename($file, determineSeparator('./database/migrations/create_'.title_snake($packageSlugWithoutPrefix).'_table.php.stub')),
         str_contains($file, determineSeparator('config/skeleton.php')) => rename($file, determineSeparator('./config/'.$packageSlug.'.php')),
         str_contains($file, 'README.md') => remove_readme_paragraphs($file),
@@ -233,7 +233,7 @@ foreach ($files as $file) {
     };
 }
 
-rename('src/UI/Filament/Resources/ModelResource', determineSeparator('./src/UI/Filament/Resources/'.$modelName.'Resource'));
+rename('src/UI/Filament/Resources/ModelResource', determineSeparator('./src/UI/Filament/Resources/'.$singleName.'Resource'));
 
 if (! $useLaravelPint) {
     safeUnlink(__DIR__.'/.github/workflows/fix-php-code-style-issues.yml');

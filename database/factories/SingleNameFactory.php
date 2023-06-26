@@ -3,11 +3,11 @@
 namespace VendorName\Skeleton\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use VendorName\Skeleton\Models\ModelName;
+use VendorName\Skeleton\Models\SingleName;
 
-class ModelNameFactory extends Factory
+class SingleNameFactory extends Factory
 {
-    protected $model = ModelName::class;
+    protected $model = SingleName::class;
 
     public function definition()
     {

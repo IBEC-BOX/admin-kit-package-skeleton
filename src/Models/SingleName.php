@@ -5,9 +5,9 @@ namespace VendorName\Skeleton\Models;
 use AdminKit\Core\Abstracts\Models\AbstractModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Spatie\Translatable\HasTranslations;
-use VendorName\Skeleton\Database\Factories\ModelNameFactory;
+use VendorName\Skeleton\Database\Factories\SingleNameFactory;
 
-class ModelName extends AbstractModel
+class SingleName extends AbstractModel
 {
     use HasFactory;
     use HasTranslations;
@@ -24,8 +24,8 @@ class ModelName extends AbstractModel
         'title',
     ];
 
-    protected static function newFactory(): ModelNameFactory
+    protected static function newFactory(): SingleNameFactory
     {
-        return new ModelNameFactory();
+        return new SingleNameFactory();
     }
 }

@@ -8,14 +8,14 @@ use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
-use VendorName\Skeleton\Models\ModelName;
-use VendorName\Skeleton\UI\Filament\Resources\ModelNameResource\Pages;
+use VendorName\Skeleton\Models\SingleName;
+use VendorName\Skeleton\UI\Filament\Resources\SingleNameResource\Pages;
 
-class ModelNameResource extends Resource
+class SingleNameResource extends Resource
 {
     use Translatable;
 
-    protected static ?string $model = ModelName::class;
+    protected static ?string $model = SingleName::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-x';
 
@@ -58,9 +58,9 @@ class ModelNameResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListModelName::route('/'),
-            'create' => Pages\CreateModelName::route('/create'),
-            'edit' => Pages\EditModelName::route('/{record}/edit'),
+            'index' => Pages\ListSingleName::route('/'),
+            'create' => Pages\CreateSingleName::route('/create'),
+            'edit' => Pages\EditSingleName::route('/{record}/edit'),
         ];
     }
 

@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace VendorName\Skeleton\UI\API\Controllers;
 
-use VendorName\Skeleton\Models\ModelName;
+use VendorName\Skeleton\Models\SingleName;
 
-class ModelNameController extends Controller
+class SingleNameController extends Controller
 {
     public function index()
     {
-        return ModelName::all();
+        return SingleName::all();
     }
 
     public function show(int $id)
     {
-        return ModelName::findOrFail($id);
+        return SingleName::findOrFail($id);
     }
 }
