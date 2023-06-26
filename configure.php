@@ -215,12 +215,12 @@ foreach ($files as $file) {
     ]);
 
     match (true) {
-        str_contains($file, determineSeparator('src/UI/API/Controllers/ModelController.php')) => rename($file, determineSeparator('./src/UI/API/Controllers/'.$singleName.'Controller.php')),
-        str_contains($file, determineSeparator('src/UI/Filament/Resources/ModelResource.php')) => rename($file, determineSeparator('./src/UI/Filament/Resources/'.$singleName.'Resource.php')),
-        str_contains($file, determineSeparator('src/UI/Filament/Resources/ModelResource/Pages/CreateModel.php')) => rename($file, determineSeparator('./src/UI/Filament/Resources/ModelResource/Pages/Create'.$singleName.'.php')),
-        str_contains($file, determineSeparator('src/UI/Filament/Resources/ModelResource/Pages/EditModel.php')) => rename($file, determineSeparator('./src/UI/Filament/Resources/ModelResource/Pages/Edit'.$singleName.'.php')),
-        str_contains($file, determineSeparator('src/UI/Filament/Resources/ModelResource/Pages/ListModel.php')) => rename($file, determineSeparator('./src/UI/Filament/Resources/ModelResource/Pages/List'.$singleName.'.php')),
-        str_contains($file, determineSeparator('src/Models/Model.php')) => rename($file, determineSeparator('./src/Models/'.$singleName.'.php')),
+        str_contains($file, determineSeparator('src/UI/API/Controllers/SingleNameController.php')) => rename($file, determineSeparator('./src/UI/API/Controllers/'.$singleName.'Controller.php')),
+        str_contains($file, determineSeparator('src/UI/Filament/Resources/SingleNameResource.php')) => rename($file, determineSeparator('./src/UI/Filament/Resources/'.$singleName.'Resource.php')),
+        str_contains($file, determineSeparator('src/UI/Filament/Resources/SingleNameResource/Pages/CreateSingleName.php')) => rename($file, determineSeparator('./src/UI/Filament/Resources/SingleNameResource/Pages/Create'.$singleName.'.php')),
+        str_contains($file, determineSeparator('src/UI/Filament/Resources/SingleNameResource/Pages/EditSingleName.php')) => rename($file, determineSeparator('./src/UI/Filament/Resources/SingleNameResource/Pages/Edit'.$singleName.'.php')),
+        str_contains($file, determineSeparator('src/UI/Filament/Resources/SingleNameResource/Pages/ListSingleName.php')) => rename($file, determineSeparator('./src/UI/Filament/Resources/SingleNameResource/Pages/List'.$singleName.'.php')),
+        str_contains($file, determineSeparator('src/Models/SingleName.php')) => rename($file, determineSeparator('./src/Models/'.$singleName.'.php')),
         str_contains($file, determineSeparator('src/Skeleton.php')) => rename($file, determineSeparator('./src/'.$className.'.php')),
         str_contains($file, determineSeparator('src/SkeletonServiceProvider.php')) => rename($file, determineSeparator('./src/'.$className.'ServiceProvider.php')),
         str_contains($file, determineSeparator('src/Facades/Skeleton.php')) => rename($file, determineSeparator('./src/Facades/'.$className.'.php')),
