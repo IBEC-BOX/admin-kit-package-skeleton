@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace VendorName\Skeleton\Providers;
 
-use VendorName\Skeleton\UI\Filament\Resources\ModelNameResource;
 use Filament\PluginServiceProvider;
+use VendorName\Skeleton\UI\Filament\Resources\ModelNameResource;
 
 class FilamentServiceProvider extends PluginServiceProvider
 {

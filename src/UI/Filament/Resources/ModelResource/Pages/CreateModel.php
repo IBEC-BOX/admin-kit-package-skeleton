@@ -2,9 +2,9 @@
 
 namespace VendorName\Skeleton\UI\Filament\Resources\ModelNameResource\Pages;
 
-use VendorName\Skeleton\UI\Filament\Resources\ModelNameResource;
 use Filament\Pages\Actions;
 use Filament\Resources\Pages\CreateRecord;
+use VendorName\Skeleton\UI\Filament\Resources\ModelNameResource;
 
 class CreateModelName extends CreateRecord
 {
