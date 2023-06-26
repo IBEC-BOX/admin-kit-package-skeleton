@@ -3,6 +3,7 @@
 namespace VendorName\Skeleton\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Livewire\LivewireServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 use VendorName\Skeleton\SkeletonServiceProvider;
 
@@ -21,7 +22,7 @@ class TestCase extends Orchestra
     {
         return [
             SkeletonServiceProvider::class,
-        ];
+            LivewireServiceProvider::class,        ];
     }
 
     public function getEnvironmentSetUp($app)
