@@ -2,10 +2,10 @@
 
 namespace VendorName\Skeleton\Models;
 
-use AdminKit\Core\Ship\Abstracts\Models\AbstractModel;
-use VendorName\Skeleton\Database\Factories\ModelNameFactory;
+use AdminKit\Core\Abstracts\Models\AbstractModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Spatie\Translatable\HasTranslations;
+use VendorName\Skeleton\Database\Factories\ModelNameFactory;
 
 class ModelName extends AbstractModel
 {
