@@ -34,8 +34,13 @@ class SingleNameResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('id')->sortable(),
-                Tables\Columns\TextColumn::make('title'),
+                Tables\Columns\TextColumn::make('id')
+                    ->label(__('skeleton::skeleton_without_prefix.resource.id'))
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('title')
+                    ->label(__('skeleton::skeleton_without_prefix.resource.title')),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->label(__('admin-kit-articles::articles.resource.created_at')),
             ])
             ->defaultSort('id', 'desc')
             ->filters([
