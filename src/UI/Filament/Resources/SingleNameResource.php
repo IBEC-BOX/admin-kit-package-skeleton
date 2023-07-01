@@ -40,7 +40,7 @@ class SingleNameResource extends Resource
                 Tables\Columns\TextColumn::make('title')
                     ->label(__('skeleton::skeleton_without_prefix.resource.title')),
                 Tables\Columns\TextColumn::make('created_at')
-                    ->label(__('admin-kit-articles::articles.resource.created_at')),
+                    ->label(__('skeleton::skeleton_without_prefix.resource.created_at')),
             ])
             ->defaultSort('id', 'desc')
             ->filters([
