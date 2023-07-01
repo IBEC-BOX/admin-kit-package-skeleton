@@ -23,7 +23,9 @@ class SingleNameResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('title')->required(),
+                Forms\Components\TextInput::make('title')
+                    ->label(__('skeleton::skeleton_without_prefix.resource.title'))
+                    ->required(),
             ])
             ->columns(1);
     }
@@ -62,6 +64,16 @@ class SingleNameResource extends Resource
             'create' => Pages\CreateSingleName::route('/create'),
             'edit' => Pages\EditSingleName::route('/{record}/edit'),
         ];
+    }
+
+    public static function getLabel(): ?string
+    {
+        return __('skeleton::skeleton_without_prefix.resource.label');
+    }
+
+    public static function getPluralLabel(): ?string
+    {
+        return __('skeleton::skeleton_without_prefix.resource.plural_label');
     }
 
     public static function getTranslatableLocales(): array
