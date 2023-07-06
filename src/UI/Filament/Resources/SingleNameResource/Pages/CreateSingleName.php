@@ -18,4 +18,9 @@ class CreateSingleName extends CreateRecord
             Actions\LocaleSwitcher::make(),
         ];
     }
+
+    protected function getRedirectUrl(): string
+    {
+        return SingleNameResource::getUrl();
+    }
 }
