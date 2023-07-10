@@ -17,6 +17,7 @@ class SingleNameResource extends Resource
 
     protected static ?string $model = SingleName::class;
 
+    protected static ?string $recordTitleAttribute = 'title';
     protected static ?string $navigationIcon = 'heroicon-o-x';
 
     public static function form(Form $form): Form
