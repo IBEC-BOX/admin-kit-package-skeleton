@@ -3,7 +3,6 @@
 namespace VendorName\Skeleton\UI\Filament\Resources;
 
 use Filament\Forms;
-use Filament\Resources\Concerns\Translatable;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
@@ -13,8 +12,6 @@ use VendorName\Skeleton\UI\Filament\Resources\SingleNameResource\Pages;
 
 class SingleNameResource extends Resource
 {
-    use Translatable;
-
     protected static ?string $model = SingleName::class;
 
     protected static ?string $recordTitleAttribute = 'title';
@@ -81,10 +78,5 @@ class SingleNameResource extends Resource
     public static function getPluralLabel(): ?string
     {
         return __('skeleton::skeleton_without_prefix.resource.plural_label');
-    }
-
-    public static function getTranslatableLocales(): array
-    {
-        return config('admin-kit.locales');
     }
 }
