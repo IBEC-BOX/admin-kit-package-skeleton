@@ -2,6 +2,7 @@
 
 namespace VendorName\Skeleton\UI\Filament\Resources;
 
+use AdminKit\Core\Forms\Components\TranslatableTabs;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
@@ -21,9 +22,11 @@ class SingleNameResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('title')
-                    ->label(__('skeleton::skeleton_without_prefix.resource.title'))
-                    ->required(),
+                TranslatableTabs::make(fn($locale) => Forms\Components\Tabs\Tab::make($locale)->schema([
+                    Forms\Components\TextInput::make('title')
+                        ->label(__('skeleton::skeleton_without_prefix.resource.title'))
+                        ->required($locale === app()->getLocale()),
+                ])),
             ])
             ->columns(1);
     }
