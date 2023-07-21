@@ -15,8 +15,6 @@ class SingleNameResource extends Resource
 {
     protected static ?string $model = SingleName::class;
 
-    protected static ?string $recordTitleAttribute = 'title';
-
     protected static ?string $navigationIcon = 'heroicon-o-x';
 
     public static function form(Form $form): Form
@@ -80,6 +78,11 @@ class SingleNameResource extends Resource
     }
 
     public static function getPluralLabel(): ?string
+    {
+        return __('skeleton::skeleton_without_prefix.resource.plural_label');
+    }
+
+    public static function getNavigationGroup(): ?string
     {
         return __('skeleton::skeleton_without_prefix.resource.plural_label');
     }
