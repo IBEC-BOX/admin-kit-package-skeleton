@@ -4,9 +4,7 @@ namespace VendorName\Skeleton\UI\Filament\Resources;
 
 use AdminKit\Core\Forms\Components\TranslatableTabs;
 use Filament\Forms;
-use Filament\Resources\Form;
 use Filament\Resources\Resource;
-use Filament\Resources\Table;
 use Filament\Tables;
 use VendorName\Skeleton\Models\SingleName;
 use VendorName\Skeleton\UI\Filament\Resources\SingleNameResource\Pages;
@@ -15,9 +13,9 @@ class SingleNameResource extends Resource
 {
     protected static ?string $model = SingleName::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-x';
+    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    public static function form(Form $form): Form
+    public static function form(Forms\Form $form): Forms\Form
     {
         return $form
             ->schema([
@@ -30,7 +28,7 @@ class SingleNameResource extends Resource
             ->columns(1);
     }
 
-    public static function table(Table $table): Table
+    public static function table(Tables\Table $table): Tables\Table
     {
         return $table
             ->columns([

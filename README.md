@@ -53,8 +53,21 @@ php artisan vendor:publish --tag=":package_slug-views"
 ## Usage
 
 ```php
-$variable = new VendorName\Skeleton();
-echo $variable->echoPhrase('Hello, VendorName!');
+class AdminPanelProvider extends PanelProvider
+{
+    public function panel(Panel $panel): Panel
+    {
+        return $panel
+            ->default()
+            ->id('admin')
+            ->path('admin')
+            ...
+            ->plugins([
+                ...
+                \VendorName\Skeleton\FilamentPlugin::make(),
+            ]);
+    }
+}
 ```
 
 ## Testing
