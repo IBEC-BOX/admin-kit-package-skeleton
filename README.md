@@ -1,8 +1,8 @@
 # :package_description
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/:github_name/:package_slug.svg?style=flat-square)](https://packagist.org/packages/:packagist_name/:package_slug)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/:github_name/:package_slug/run-tests.yml?branch=2.x&label=tests&style=flat-square)](https://github.com/:github_name/:package_slug/actions?query=workflow%3Arun-tests+branch%3A2.x)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/:github_name/:package_slug/fix-php-code-style-issues.yml?branch=2.x&label=code%20style&style=flat-square)](https://github.com/:github_name/:package_slug/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3A2.x)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/:packagist_name/:package_slug.svg?style=flat-square)](https://packagist.org/packages/:packagist_name/:package_slug)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/:github_name/:package_slug/run-tests.yml?branch=3.x&label=tests&style=flat-square)](https://github.com/:github_name/:package_slug/actions?query=workflow%3Arun-tests+branch%3A3.x)
+[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/:github_name/:package_slug/fix-php-code-style-issues.yml?branch=3.x&label=code%20style&style=flat-square)](https://github.com/:github_name/:package_slug/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3A3.x)
 [![Total Downloads](https://img.shields.io/packagist/dt/:github_name/:package_slug.svg?style=flat-square)](https://packagist.org/packages/:packagist_name/:package_slug)
 <!--delete-->
 ---
